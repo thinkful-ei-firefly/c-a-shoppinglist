@@ -44,6 +44,19 @@ function generateItemElement(item, itemIndex, template) {
             event.preventDefault();
             console.log('`handleNewItemSubmit` ran');
             const newItemName = $('.js-shopping-list-entry').val();
-            $('.js-shopping-list-entry')
-        }
+            $('.js-shopping-list-entry').val('');
+            addItemToShoppingList(newItemName);
+            renderShoppingList();
+        });
+    }
+
+    function toggleCheckedForListItem(itemIndex) {
+        console.log("Please Toggle Checked Property for Item at Index" + itemIndex)
+        STORE[itemIndex].checked = !STORE[itemIndex].checked;
+    }
+
+    function generateItemFromElement(item) {
+        const itemIndexString = $(item)
+            .closest('.js-item-index-element')
+            .attr
     }
