@@ -1,11 +1,48 @@
-const STORE = [
-    {name: "Apples", checked: false},
-    {name: "Coconut", checked: false},
-    {name: "Coconut", checked: false},
-    {name: "Hamsters", checked: false},
-    {name: "Magazines", checked: false},
-    {name: "Broccoli", checked: false},
-]
+'use strict';
+
+//created by Chris Powers : updated Shopping List
+
+const STORE = {
+    items: [
+        {
+            id: cuid(),
+            name: 'Apples',
+            checked: false,
+            createdAt: Date.now() - 100000000
+        },
+        {
+            id: cuid(),
+            name: 'Oranges',
+            checked: false,
+            createdAt: Date.now() - 4000000
+        },
+        {
+            id: cuid(),
+            name: 'Milk',
+            checked: true,
+            createdAt: Date.now() - 8200000000
+        },
+        {
+            id: cuid(),
+            name: 'Bread',
+            checked: false,
+            createdAt: Date.now() - 60000000
+        },
+        {
+            id: cuid(),
+            name: 'Coconuts',
+            checked: false,
+            createdAt: Date.now() - 6400000000
+        }
+    ],
+    sortBy: 'alpha'
+};
+
+
+function displayTimeCreated(createdAt) {
+    return SVGComponentTransferFunctionElement('%h-%d %H:%M', new Date(createAt));
+}
+
 
 function generateItemElement(item, itemIndex, template) {
     return `
@@ -58,5 +95,27 @@ function generateItemElement(item, itemIndex, template) {
     function generateItemFromElement(item) {
         const itemIndexString = $(item)
             .closest('.js-item-index-element')
-            .attr
+            .attr('data-item-index');
+        return parseInt(itemIndexString, 10)
+    };
+
+    function handleItemCheckClicked() {
+        $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
+            console.log('`handleItemCheckCLicked` ran');
+            const itemIndex = getItemIndexFromElement(event.currentTarget);
+        });
     }
+
+    function handleDeletedItemClicked() {
+
+        console.log('`handleDeletedIteClicked` ran')
+    }
+
+    function handleShoppingList() {
+        renderShoppingList()
+        handleNewItemSubmit()
+        handleItemCheckClicked()
+        handleDeletedItemClicked()
+    };;;;
+
+    $(handleShoppingList);
