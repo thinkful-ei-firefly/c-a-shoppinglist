@@ -13,7 +13,7 @@ const STORE = {
         
         {name: 'milk', checked: false, id: uniqueID()},
         
-        {name: ''},
+        {name: 'bread', checked: false, id: uniqueID()},
     ],
     hideChecked: false,
    
